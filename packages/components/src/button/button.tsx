@@ -9,7 +9,7 @@ type PropTypes<HTMLElementType> = {
 	[remainingProps: string]: unknown;
 } & HTMLAttributes<HTMLElementType>;
 
-const ButtonInner = <HTMLElementType,>(
+const Button = <HTMLElementType,>(
 	{
 		className,
 		tag: Tag = "button",
@@ -18,8 +18,8 @@ const ButtonInner = <HTMLElementType,>(
 	ref: ForwardedRef<HTMLElementType>
 ) => <Tag className={className} ref={ref} {...remainingProps} />;
 
-export default forwardRef(ButtonInner) as <T = HTMLButtonElement>(
+export default forwardRef(Button) as <T = HTMLButtonElement>(
 	props: PropTypes<T> & {
 		ref?: ForwardedRef<T>;
 	}
-) => ReturnType<typeof ButtonInner>;
+) => ReturnType<typeof Button>;
