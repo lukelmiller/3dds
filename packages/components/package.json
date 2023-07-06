@@ -1,0 +1,60 @@
+{
+	"name": "3dds-components",
+	"version": "0.1.0",
+	"private": true,
+	"main": "dist/cjs/index.js",
+	"module": "dist/",
+	"files": [
+		"src"
+	],
+	"peerDependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^21.0.1",
+		"@rollup/plugin-node-resolve": "^13.0.6",
+		"@rollup/plugin-terser": "^0.4.3",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^13.5.0",
+		"@types/jest": "^27.5.2",
+		"@types/node": "^16.18.36",
+		"@types/react": "^18.2.14",
+		"@types/react-dom": "^18.2.6",
+		"glob": "^10.3.1",
+		"raw-loader": "^4.0.2",
+		"react-scripts": "5.0.1",
+		"rollup": "^2.60.0",
+		"rollup-plugin-dts": "^4.0.1",
+		"rollup-plugin-typescript2": "^0.35.0",
+		"tslib": "^2.6.0",
+		"typescript": "^4.9.5",
+		"web-vitals": "^2.1.4"
+	},
+	"scripts": {
+		"start": "rollup -w",
+		"clean": "rm -r dist",
+		"build": "rollup -c",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
+}
