@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import typescript from "rollup-plugin-typescript2";
 import ts from "typescript";
 import pkg from "./package.json";
+import copy from "rollup-plugin-copy";
 
 const config = [
 	{
@@ -50,6 +51,13 @@ const config = [
 			typescript({
 				tsconfig: "./tsconfig.build.json",
 				typescript: ts,
+			}),
+			copy({
+				targets: [
+					{ dest: "dist/", src: "src/**/examples/*.tsx" },
+					{ dest: "dist/", src: "package.json" },
+				],
+				flatten: false,
 			}),
 		],
 	},

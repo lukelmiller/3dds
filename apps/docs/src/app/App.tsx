@@ -5,21 +5,20 @@ import "./App.css";
 const getExamples = (component: string, examples: string[]) => {
 	return examples.map(
 		(example) =>
-			require(`!!raw-loader!3dds-components/src/${component}/examples/${example}.tsx`).default.toString() +
+			require(`!!raw-loader!3dds-components/${component}/examples/${example}.tsx`).default.toString() +
 			"\n\n"
 	);
 };
 
 const getExampleNames = (components: string[]): string[][] =>
 	components.map(
-		(component) =>
-			require(`3dds-components/dist/${component}/examples/`).default
+		(component) => require(`3dds-components/${component}/examples/`).default
 	);
 
 const lazyLoadExamples = (component: string, examples: string[]): FC[] =>
 	examples.map(
 		(example) =>
-			require(`3dds-components/dist/${component}/examples/${example}.js`)
+			require(`3dds-components/${component}/examples/${example}.js`)
 				.default
 	);
 
