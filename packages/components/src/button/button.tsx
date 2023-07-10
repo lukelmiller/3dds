@@ -1,11 +1,18 @@
-import { ElementType, ForwardedRef, HTMLAttributes, forwardRef } from "react";
+import {
+	ElementType,
+	ForwardedRef,
+	HTMLAttributes,
+	ReactElement,
+	forwardRef,
+} from "react";
 
-type PropTypes<HTMLElementType> = {
+type PropTypes<HTMLElementType = HTMLButtonElement> = {
 	/** @ignore */
 	className?: string;
+	/** This is a useRef */
+	ref?: ForwardedRef<HTMLElementType>;
 	/** Optional Tag of Component */
 	tag?: ElementType;
-	/** @ignore */
 	[remainingProps: string]: unknown;
 } & HTMLAttributes<HTMLElementType>;
 
@@ -16,10 +23,24 @@ const Button = <HTMLElementType,>(
 		...remainingProps
 	}: PropTypes<HTMLElementType>,
 	ref: ForwardedRef<HTMLElementType>
-) => <Tag className={className} ref={ref} {...remainingProps} />;
+) => <Tag className={className} {...remainingProps} ref={ref} />;
 
-export default forwardRef(Button) as <T = HTMLButtonElement>(
-	props: PropTypes<T> & {
-		ref?: ForwardedRef<T>;
+Button.defaultProps = {
+	tag: "button",
+};
+
+Button.displayName = "Button";
+
+/**
+ * This is the button description
+ * @status Development
+ */
+export default forwardRef(
+	Button as {
+		(props: PropTypes, ref: ForwardedRef<unknown>): ReactElement;
+	}
+) as <HTMLElementType = HTMLButtonElement>(
+	props: PropTypes<HTMLElementType> & {
+		ref?: ForwardedRef<HTMLElementType>;
 	}
 ) => ReturnType<typeof Button>;
