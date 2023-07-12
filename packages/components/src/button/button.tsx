@@ -6,7 +6,7 @@ import {
 	forwardRef,
 } from "react";
 
-type PropTypes<HTMLElementType = HTMLButtonElement> = {
+type ButtonPropTypes<HTMLElementType = HTMLButtonElement> = {
 	/** @ignore */
 	className?: string;
 	/** This is a useRef */
@@ -21,7 +21,7 @@ const Button = <HTMLElementType,>(
 		className,
 		tag: Tag = "button",
 		...remainingProps
-	}: PropTypes<HTMLElementType>,
+	}: ButtonPropTypes<HTMLElementType>,
 	ref: ForwardedRef<HTMLElementType>
 ) => <Tag className={className} {...remainingProps} ref={ref} />;
 
@@ -37,10 +37,10 @@ Button.displayName = "Button";
  */
 export default forwardRef(
 	Button as {
-		(props: PropTypes, ref: ForwardedRef<unknown>): ReactElement;
+		(props: ButtonPropTypes, ref: ForwardedRef<unknown>): ReactElement;
 	}
 ) as <HTMLElementType = HTMLButtonElement>(
-	props: PropTypes<HTMLElementType> & {
+	props: ButtonPropTypes<HTMLElementType> & {
 		ref?: ForwardedRef<HTMLElementType>;
 	}
 ) => ReturnType<typeof Button>;

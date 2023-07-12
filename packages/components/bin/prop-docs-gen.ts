@@ -35,4 +35,6 @@ const docs = parser.map(
 	}
 );
 
-console.log(docs);
+parser.map((doc) => console.log(doc));
+
+// console.log(docs);
