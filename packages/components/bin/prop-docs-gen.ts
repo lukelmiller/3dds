@@ -10,6 +10,7 @@ const options = {
 	},
 	shouldExtractValuesFromUnion: false,
 };
+
 const files = globSync("../src/**/*.tsx", {
 	ignore: ["../**/examples/**", "**/index.ts"],
 });
@@ -35,6 +36,4 @@ const docs = parser.map(
 	}
 );
 
-parser.map((doc) => console.log(doc));
-
-// console.log(docs);
+console.log(docs[0].props);

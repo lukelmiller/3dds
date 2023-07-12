@@ -1,7 +1,7 @@
+import { Button } from "3dds-components";
 import libConfig from "3dds-components/package.json";
 import { FC, Suspense } from "react";
 import "./App.css";
-import { Button } from "3dds-components";
 
 const getExamples = (component: string, examples: string[]) => {
 	return examples.map(
@@ -38,8 +38,7 @@ function App() {
 
 			<br />
 			<br />
-			<Button<HTMLAnchorElement> tag="a">Anchor</Button>
-
+			<Button onClick={(event) => event}>Anchor</Button>
 			<pre>{exampleCode}</pre>
 		</>
 	);

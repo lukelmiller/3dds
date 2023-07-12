@@ -105,9 +105,6 @@ importers:
       glob:
         specifier: ^10.3.1
         version: 10.3.1
-      raw-loader:
-        specifier: ^4.0.2
-        version: 4.0.2(webpack@5.88.0)
       react-docgen-typescript:
         specifier: ^2.2.2
         version: 2.2.2(typescript@4.9.5)
@@ -132,9 +129,6 @@ importers:
       typescript:
         specifier: ^4.9.5
         version: 4.9.5
-      web-vitals:
-        specifier: ^2.1.4
-        version: 2.1.4
 
   packages/components/dist:
     dependencies:
@@ -181,9 +175,9 @@ importers:
       glob:
         specifier: ^10.3.1
         version: 10.3.1
-      raw-loader:
-        specifier: ^4.0.2
-        version: 4.0.2(webpack@5.88.0)
+      react-docgen-typescript:
+        specifier: ^2.2.2
+        version: 2.2.2(typescript@4.9.5)
       react-scripts:
         specifier: 5.0.1
         version: 5.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.5)(eslint@8.43.0)(react@18.2.0)(typescript@4.9.5)
@@ -205,9 +199,6 @@ importers:
       typescript:
         specifier: ^4.9.5
         version: 4.9.5
-      web-vitals:
-        specifier: ^2.1.4
-        version: 2.1.4
 
 packages:
 
@@ -8645,6 +8636,7 @@ packages:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
       webpack: 5.88.0
+    dev: false
 
   /raw.macro@0.7.0:
     resolution: {integrity: sha512-SVAShKzXzPHXg6x9bRMjcHWHj3xKqSyBG9x/alSeXOPmpAWb/wl/nZAHxpa5UDDptyA8z0ZJt1nArbZnmeFvpA==}
