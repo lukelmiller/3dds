@@ -34,14 +34,21 @@ const config = [
 		),
 		output: [
 			{
+				entryFileNames: "[name].cjs",
 				exports: "auto",
-				dir: "./dist/cjs",
+				dir: "./dist",
 				format: "cjs",
+				// Might Need This True
+				// https://rollupjs.org/faqs/#why-do-additional-imports-turn-up-in-my-entry-chunks-when-code-splitting
+				hoistTransitiveImports: false,
 			},
 			{
 				exports: "auto",
 				dir: "./dist",
 				format: "es",
+				// Might Need This True
+				// https://rollupjs.org/faqs/#why-do-additional-imports-turn-up-in-my-entry-chunks-when-code-splitting
+				hoistTransitiveImports: false,
 			},
 		],
 		plugins: [

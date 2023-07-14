@@ -2,8 +2,14 @@
 	"name": "3dds-components",
 	"version": "0.1.0",
 	"private": true,
-	"main": "dist/cjs/index.js",
-	"module": "dist/",
+	"author": "Luke Miller",
+	"main": "dist/index.cjs",
+	"module": "dist/index.js",
+	"repository": {
+		"url": "https://github.com/lukelmiller/3dds/packages/components/"
+	},
+	"sideEffects": false,
+	"type": "module",
 	"files": [
 		"src"
 	],
@@ -35,7 +41,6 @@
 		"tslib": "^2.6.0",
 		"typescript": "^4.9.5"
 	},
-	"type": "module",
 	"scripts": {
 		"start": "rollup -cw",
 		"clean": "rm -r dist",

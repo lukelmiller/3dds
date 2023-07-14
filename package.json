@@ -2,6 +2,10 @@
 	"name": "3dds",
 	"version": "1.0.0",
 	"description": "",
+	"private": true,
+	"repository": {
+		"url": "https://github.com/lukelmiller/3dds/"
+	},
 	"workspaces": [
 		"packages/components",
 		"apps/docs"
@@ -11,6 +15,6 @@
 		"start": "pnpm run -r --parallel start"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "Luke Miller",
 	"license": "ISC"
 }

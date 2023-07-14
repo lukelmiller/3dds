@@ -1,0 +1,22 @@
+{
+	"name": "styles",
+	"version": "1.0.0",
+	"description": "",
+	"keywords": [
+		"SCSS",
+		"SASS",
+		"CSS",
+		"Styles",
+		"Library"
+	],
+	"scripts": {
+		"build": "node-sass src -o dist --output-style compressed",
+		"start": "node-sass src -w -o dist --output-style compressed"
+	},
+	"devDependencies": {
+		"node-sass": "^9.0.0",
+		"sass": "^1.63.6"
+	},
+	"author": "Luke Miller",
+	"license": "ISC"
+}
