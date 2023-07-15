@@ -8,12 +8,14 @@ import typescript from "rollup-plugin-typescript2";
 import ts from "typescript";
 import pkg from "./package.json";
 import copy from "rollup-plugin-copy";
+import { generateDocs } from "./bin/prop-docs-gen";
 
 const config = [
 	{
 		external: [
 			...Object.keys(pkg.peerDependencies || {}),
 			"react/jsx-runtime",
+			/\.css$/,
 		],
 		input: Object.fromEntries(
 			glob
@@ -52,6 +54,7 @@ const config = [
 			},
 		],
 		plugins: [
+			generateDocs,
 			nodeResolve({ moduleDirectories: ["node_modules"] }),
 			commonjs(),
 			terser(),
@@ -62,6 +65,7 @@ const config = [
 			copy({
 				targets: [
 					{ dest: "dist/", src: "src/**/examples/*.tsx" },
+					{ dest: "dist/", src: "src/**/package.json" },
 					{ dest: "dist/", src: "package.json" },
 				],
 				flatten: false,

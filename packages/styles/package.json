@@ -1,7 +1,11 @@
 {
-	"name": "styles",
+	"name": "3dds-styles",
 	"version": "1.0.0",
 	"description": "",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"private": true,
+	"type": "module",
 	"keywords": [
 		"SCSS",
 		"SASS",
@@ -10,8 +14,9 @@
 		"Library"
 	],
 	"scripts": {
-		"build": "node-sass src -o dist --output-style compressed",
-		"start": "node-sass src -w -o dist --output-style compressed"
+		"copyPJ": "cp ./package.json ./dist",
+		"build": "node-sass src -o dist --output-style compressed && pnpm copyPJ",
+		"start": "pnpm copyPJ && node-sass src -w -o dist --output-style compressed"
 	},
 	"devDependencies": {
 		"node-sass": "^9.0.0",

@@ -1,7 +1,7 @@
 import { writeFileSync } from "fs";
 import { globSync } from "glob";
 import { resolve } from "path";
-import { parse, PropItem } from "react-docgen-typescript";
+import { parse } from "react-docgen-typescript";
 
 const fileName = "package.json";
 const filenameRegex = new RegExp("/[^/]*$");
@@ -9,7 +9,7 @@ const files = globSync("src/**/*.tsx", {
 	ignore: ["**/examples/**", "**/index.ts"],
 });
 const options = {
-	propFilter: (prop: PropItem) => {
+	propFilter: (prop) => {
 		const filterOut =
 			prop.parent?.fileName.includes("node_modules") ||
 			prop.description.includes("@ignore");

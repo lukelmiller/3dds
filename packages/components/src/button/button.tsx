@@ -1,5 +1,6 @@
 import { ElementType, ForwardedRef } from "react";
 import ForwardedRefTyped from "../utils/forward-ref-typed";
+import "3dds-styles/button/button.css";
 
 type ButtonPropTypes = {
 	/** @ignore */
@@ -16,7 +17,7 @@ const Button = <HTMLElementType,>(
 
 /**
  * This is the button description
- * @status Development
+ * @status In-Development
  */
 export default ForwardedRefTyped<ButtonPropTypes, HTMLButtonElement>(Button);
 

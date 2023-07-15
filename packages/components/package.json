@@ -3,8 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"author": "Luke Miller",
-	"main": "dist/index.cjs",
-	"module": "dist/index.js",
+	"main": "index.cjs",
+	"module": "index.js",
 	"repository": {
 		"url": "https://github.com/lukelmiller/3dds/packages/components/"
 	},
@@ -17,6 +17,8 @@
 		"button"
 	],
 	"peerDependencies": {
+		"3dds-styles": "workspace:^",
+		"classnames": "^2.3.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
@@ -43,7 +45,8 @@
 	},
 	"scripts": {
 		"start": "rollup -cw",
-		"clean": "rm -r dist",
+		"docgen": "ts-node --esm bin/prop-docs-gen.ts",
+		"clean": "rm -r dist && rm -r src/**/package.json",
 		"build": "rollup -c",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
