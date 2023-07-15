@@ -50,10 +50,7 @@ const Router = createBrowserRouter(
 );
 
 const Routes = () => (
-	<RouterProvider
-		fallbackElement={<h1>Loading Props Table...</h1>}
-		router={Router}
-	/>
+	<RouterProvider fallbackElement={<h1>Loading...</h1>} router={Router} />
 );
 
 export default Routes;
