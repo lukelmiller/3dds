@@ -14,7 +14,8 @@
 		"src"
 	],
 	"components": [
-		"button"
+		"button",
+		"link"
 	],
 	"peerDependencies": {
 		"3dds-styles": "workspace:^",
@@ -47,7 +48,7 @@
 		"start": "rollup -cw",
 		"docgen": "ts-node --esm bin/prop-docs-gen.ts",
 		"clean": "rm -r dist && rm -r src/**/package.json",
-		"build": "rollup -c",
+		"build": "pnpm docgen && rollup -c",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},

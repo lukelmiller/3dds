@@ -1,47 +1,7 @@
-import { Button } from "3dds-components";
-import libConfig from "3dds-components/package.json";
-import { FC, Suspense } from "react";
-import "./App.css";
+import Routing from "../routes/routes";
 
-const getExamples = (component: string, examples: string[]) => {
-	return examples.map(
-		(example) =>
-			require(`!!raw-loader!3dds-components/${component}/examples/${example}.tsx`).default.toString() +
-			"\n\n"
-	);
+const App = () => {
+	return <Routing />;
 };
-
-const getExampleNames = (components: string[]): string[][] =>
-	components.map(
-		(component) => require(`3dds-components/${component}/examples/`).default
-	);
-
-const lazyLoadExamples = (component: string, examples: string[]): FC[] =>
-	examples.map(
-		(example) =>
-			require(`3dds-components/${component}/examples/${example}.js`)
-				.default
-	);
-
-function App() {
-	const exampleNames = getExampleNames(libConfig.components);
-	const exampleCode = getExamples("button", exampleNames[0]);
-	const examplesComponents = lazyLoadExamples("button", exampleNames[0]);
-
-	return (
-		<>
-			<Suspense></Suspense>
-			<h1>Hello</h1>
-			{examplesComponents.map((Component, index) => (
-				<Component key={`${exampleNames[0]}-example-${index}`} />
-			))}
-
-			<br />
-			<br />
-			<Button onClick={(event) => event}>Anchor</Button>
-			<pre>{exampleCode}</pre>
-		</>
-	);
-}
 
 export default App;

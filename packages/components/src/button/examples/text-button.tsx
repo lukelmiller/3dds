@@ -1,7 +1,7 @@
 import { Button } from "../../";
 
 /**
- * This is a button that has only text inside.
+ * This is a button that has only text inside
  */
 const TextButton = () => {
 	const onClick = () => {

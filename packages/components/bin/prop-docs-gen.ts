@@ -27,10 +27,11 @@ const docs = parser.map(
 			displayName,
 			filePath,
 			props: Object.values(props).map(
-				({ defaultValue, description, name, type }) => ({
+				({ defaultValue, description, name, required, type }) => ({
 					defaultValue: defaultValue?.value,
 					description,
 					name,
+					required,
 					type: type.name,
 				})
 			),

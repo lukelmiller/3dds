@@ -8,7 +8,6 @@ import typescript from "rollup-plugin-typescript2";
 import ts from "typescript";
 import pkg from "./package.json";
 import copy from "rollup-plugin-copy";
-import { generateDocs } from "./bin/prop-docs-gen";
 
 const config = [
 	{
@@ -54,7 +53,6 @@ const config = [
 			},
 		],
 		plugins: [
-			generateDocs,
 			nodeResolve({ moduleDirectories: ["node_modules"] }),
 			commonjs(),
 			terser(),

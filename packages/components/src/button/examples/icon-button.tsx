@@ -1,7 +1,7 @@
 import { Button } from "../../";
 
 /**
- * This is a button that has an icon inside.
+ * This is a button that has an icon inside
  */
 const IconButton = () => {
 	const onClick = () => {
