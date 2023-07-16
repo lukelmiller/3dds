@@ -6,6 +6,11 @@
 	"module": "index.js",
 	"private": true,
 	"type": "module",
+	"repository": {
+		"directory": "packages/styles",
+		"type": "git",
+		"url": "https://github.com/lukelmiller/3dds.git"
+	},
 	"keywords": [
 		"SCSS",
 		"SASS",

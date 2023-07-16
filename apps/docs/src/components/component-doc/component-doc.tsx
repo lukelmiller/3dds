@@ -30,6 +30,13 @@ const ComponentDoc = () => {
 		<>
 			<h1>{componentPackageJson.displayName}</h1>
 			<p>{componentPackageJson.description}</p>
+			<a
+				href={componentPackageJson.gitLink}
+				rel="noreferrer"
+				target="_blank"
+			>
+				Component Source Code
+			</a>
 			{exampleNames.map((exampleName) => {
 				return (
 					<Suspense

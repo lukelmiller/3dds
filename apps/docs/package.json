@@ -4,7 +4,9 @@
 	"private": true,
 	"author": "Luke Miller",
 	"repository": {
-		"url": "https://github.com/lukelmiller/3dds/apps/docs/"
+		"directory": "apps/docs",
+		"type": "git",
+		"url": "https://github.com/lukelmiller/3dds.git"
 	},
 	"dependencies": {
 		"3dds-components": "^1.0.0",

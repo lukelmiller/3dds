@@ -6,7 +6,9 @@
 	"main": "index.cjs",
 	"module": "index.js",
 	"repository": {
-		"url": "https://github.com/lukelmiller/3dds/packages/components/"
+		"directory": "packages/components",
+		"type": "git",
+		"url": "https://github.com/lukelmiller/3dds.git"
 	},
 	"sideEffects": false,
 	"type": "module",
