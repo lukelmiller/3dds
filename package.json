@@ -7,8 +7,9 @@
 		"url": "https://github.com/lukelmiller/3dds/"
 	},
 	"workspaces": [
-		"packages/components",
-		"apps/docs"
+		"apps/docs",
+		"packages/components/dist",
+		"packages/styles/dist"
 	],
 	"main": "index.js",
 	"scripts": {

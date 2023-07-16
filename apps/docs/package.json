@@ -1,14 +1,14 @@
 {
 	"name": "docs",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"private": true,
 	"author": "Luke Miller",
 	"repository": {
 		"url": "https://github.com/lukelmiller/3dds/apps/docs/"
 	},
 	"dependencies": {
-		"3dds-components": "workspace:^",
-		"3dds-styles": "workspace:^",
+		"3dds-components": "^1.0.0",
+		"3dds-styles": "^1.0.0",
 		"raw-loader": "^4.0.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",

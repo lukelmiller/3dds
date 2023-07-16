@@ -2,8 +2,8 @@
 	"name": "3dds-styles",
 	"version": "1.0.0",
 	"description": "",
-	"main": "dist/index.js",
-	"module": "dist/index.js",
+	"main": "index.js",
+	"module": "index.js",
 	"private": true,
 	"type": "module",
 	"keywords": [

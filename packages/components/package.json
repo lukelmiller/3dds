@@ -1,6 +1,6 @@
 {
 	"name": "3dds-components",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"private": true,
 	"author": "Luke Miller",
 	"main": "index.cjs",
@@ -18,7 +18,7 @@
 		"link"
 	],
 	"peerDependencies": {
-		"3dds-styles": "workspace:^",
+		"3dds-styles": "^1.0.0",
 		"classnames": "^2.3.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
