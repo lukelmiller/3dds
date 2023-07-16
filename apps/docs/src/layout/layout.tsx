@@ -1,26 +1,29 @@
-import { Link, Outlet } from "react-router-dom";
 import libConfig from "3dds-components/package.json";
+import { NavLink, Outlet } from "react-router-dom";
+import Styles from "./layout.module.css";
 
 const ComponentNames = libConfig.components;
 
 const Layout = () => {
 	return (
-		<main>
-			<div className="side-nav">
+		<div className={Styles.layout}>
+			<div className={Styles.sideNav}>
 				{ComponentNames.map((componentName) => (
-					<>
-						<Link
-							key={`side-nav-link-${componentName}`}
-							to={`/components/${componentName}`}
-						>
-							{componentName}
-						</Link>
-						<br />
-					</>
+					<NavLink
+						className={({ isActive }) =>
+							isActive ? Styles.navLinkActive : Styles.navLink
+						}
+						key={`side-nav-link-${componentName}`}
+						to={`/components/${componentName}`}
+					>
+						{componentName}
+					</NavLink>
 				))}
 			</div>
-			<Outlet />
-		</main>
+			<main className={Styles.content}>
+				<Outlet />
+			</main>
+		</div>
 	);
 };
 

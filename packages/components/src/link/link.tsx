@@ -1,19 +1,24 @@
 import "3dds-styles/button/button.css";
-import { ElementType, ForwardedRef } from "react";
-import ForwardedRefTyped from "../utils/forward-ref-typed";
+import { ForwardedRef, ReactElement, cloneElement } from "react";
+import ForwardedRefTyped, { RefPropTypes } from "../utils/forward-ref-typed";
 
 type LinkPropTypes = {
 	/** @ignore */
 	className?: string;
 	/** Tag of Component */
-	tag?: ElementType;
+	element?: ReactElement;
 	[remainingProps: string]: unknown;
 };
 
 const Link = <HTMLElementType,>(
-	{ className, tag: Tag = "a", ...remainingProps }: LinkPropTypes,
+	{ className, element = <a />, ...remainingProps }: LinkPropTypes,
 	ref: ForwardedRef<HTMLElementType>
-) => <Tag className={className} {...remainingProps} ref={ref} />;
+) =>
+	cloneElement<LinkPropTypes & RefPropTypes<HTMLElementType>>(element, {
+		className,
+		ref,
+		...remainingProps,
+	});
 
 /**
  * This is the link description
@@ -22,7 +27,7 @@ const Link = <HTMLElementType,>(
 export default ForwardedRefTyped<LinkPropTypes, HTMLAnchorElement>(Link);
 
 Link.defaultProps = {
-	tag: "a",
+	element: <a />,
 };
 
 Link.displayName = "Link";

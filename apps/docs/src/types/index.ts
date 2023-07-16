@@ -9,5 +9,5 @@ export type ComponentPackageJson = {
 		required?: boolean;
 		type?: string;
 	}[];
-	status: string;
+	status?: string;
 };

@@ -8,20 +8,26 @@ type PropTypes = {
 const PropsTable: FC<PropTypes> = ({ props }) => {
 	return (
 		<table>
-			<tr>
-				<th>Name</th>
-				<th>Default Value</th>
-				<th>Type</th>
-				<th>Description</th>
-			</tr>
-			{props.map((prop) => (
+			<thead>
 				<tr>
-					<td>{prop.name}</td>
-					<td>{prop?.required ? "REQUIRED" : prop.defaultValue}</td>
-					<td>{prop.type}</td>
-					<td>{prop.description}</td>
+					<th>Name</th>
+					<th>Default Value</th>
+					<th>Type</th>
+					<th>Description</th>
 				</tr>
-			))}
+			</thead>
+			<tbody>
+				{props.map((prop, index) => (
+					<tr key={`props-table-row-${index}-${prop.name}`}>
+						<td>{prop.name}</td>
+						<td>
+							{prop?.required ? "REQUIRED" : prop.defaultValue}
+						</td>
+						<td>{prop.type}</td>
+						<td>{prop.description}</td>
+					</tr>
+				))}
+			</tbody>
 		</table>
 	);
 };

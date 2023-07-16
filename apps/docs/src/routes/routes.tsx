@@ -17,15 +17,14 @@ const Router = createBrowserRouter(
 				},
 			],
 			element: <Layout />,
-			path: "/",
+			path: "/components",
 		},
 		{
 			lazy: async () => ({
-				Component: (
-					await import("../components/component-doc/component-doc")
-				).default,
+				Component: (await import("../components/example/example"))
+					.default,
 			}),
-			path: "/:component",
+			path: "/components/:component/:exampleName",
 		},
 		{
 			lazy: async () => ({
@@ -35,7 +34,7 @@ const Router = createBrowserRouter(
 					)
 				).default,
 			}),
-			path: "/:component/:exampleName",
+			path: "/components/:component/:exampleName/example",
 		},
 		{
 			lazy: async () => ({
@@ -43,7 +42,7 @@ const Router = createBrowserRouter(
 					await import("../components/example-code/example-code")
 				).default,
 			}),
-			path: "/:component/:exampleName/code",
+			path: "/components/:component/:exampleName/code",
 		},
 	],
 	{ basename: process.env.PUBLIC_URL }

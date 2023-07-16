@@ -1,0 +1,29 @@
+.content {
+	padding: 1rem;
+}
+.layout {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+.navLink {
+	border-radius: 4px;
+	text-decoration: none;
+	padding: 4px 8px;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+.navLinkActive {
+	background: gray;
+	border-radius: 4px;
+	color: white;
+	padding: 4px 8px;
+	text-decoration: none;
+}
+.sideNav {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 0.1rem;
+}
