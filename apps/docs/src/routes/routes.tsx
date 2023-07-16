@@ -49,7 +49,7 @@ const Router = createBrowserRouter(
 );
 
 const Routes = () => (
-	<RouterProvider fallbackElement={<h1>Loading...</h1>} router={Router} />
+	<RouterProvider fallbackElement={<>Loading Route...</>} router={Router} />
 );
 
 export default Routes;

@@ -1,7 +1,13 @@
-import Routing from "../routes/routes";
+import { Suspense, lazy } from "react";
+
+const LazyRouting = lazy(() => import("../routes/routes"));
 
 const App = () => {
-	return <Routing />;
+	return (
+		<Suspense fallback={<>Loading...</>}>
+			<LazyRouting />
+		</Suspense>
+	);
 };
 
 export default App;
