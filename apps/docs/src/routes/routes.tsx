@@ -13,18 +13,21 @@ const Router = createBrowserRouter(
 							)
 						).default,
 					}),
-					path: "/components/:component",
+					path: "/components/:component/:exampleName",
+				},
+				{
+					lazy: async () => ({
+						Component: (
+							await import(
+								"../components/component-doc/component-doc"
+							)
+						).default,
+					}),
+					path: "/components/:component/",
 				},
 			],
 			element: <Layout />,
 			path: "/components",
-		},
-		{
-			lazy: async () => ({
-				Component: (await import("../components/example/example"))
-					.default,
-			}),
-			path: "/components/:component/:exampleName",
 		},
 		{
 			lazy: async () => ({
