@@ -5,13 +5,22 @@ const LazyExampleComponent = lazy(
 	() => import("../example-component/example-component")
 );
 
+const getExampleUrl = (component: string) => {
+	const prefixRegex = RegExp(`.*/${component}(/|$)`);
+	const suffixRegex = RegExp("/.*");
+	return window.location.href
+		.replace(prefixRegex, "")
+		.replace(suffixRegex, "");
+};
+
 const updatePosition = (
 	ref: RefObject<HTMLDivElement>,
 	component: string,
 	example: string,
 	urlRegex: RegExp
 ) => {
-	if (window.scrollY < 5) {
+	const exampleFromUrl = getExampleUrl(component);
+	if (window.scrollY < 5 && exampleFromUrl !== "") {
 		window.history.replaceState(
 			null,
 			"",
@@ -19,28 +28,31 @@ const updatePosition = (
 		);
 		return;
 	}
-	const offset = (ref?.current?.offsetTop || 0) - window.scrollY;
-	if (offset < 5 && offset > 0)
-		window.history.replaceState(
-			null,
-			"",
-			window.location.href.replace(urlRegex, `/${component}/${example}/`)
-		);
+	if (example !== exampleFromUrl) {
+		const offset = (ref?.current?.offsetTop || 0) - window.scrollY;
+		if (offset < 5 && offset > 0) {
+			window.history.replaceState(
+				null,
+				"",
+				window.location.href.replace(
+					urlRegex,
+					`/${component}/${example}/`
+				)
+			);
+		}
+	}
 };
 
 type PropTypes = {
 	exampleName?: string;
 };
 
-const Example = (props: PropTypes) => {
+const Example = ({ exampleName = "" }: PropTypes) => {
 	const exampleRef = useRef<HTMLDivElement>(null);
-	const { component = "", exampleName } = useParams();
-
-	/// Derived Data
-	const name = props.exampleName || "";
+	const { component = "", exampleName: urlExampleName = "" } = useParams();
 
 	useEffect(() => {
-		if (exampleName === props.exampleName)
+		if (exampleName === urlExampleName)
 			exampleRef.current?.scrollIntoView({
 				behavior: "smooth",
 				block: "start",
@@ -49,23 +61,23 @@ const Example = (props: PropTypes) => {
 			`(/${component}/[^/]*($|/))|(/${component}($|/))`
 		);
 		window.addEventListener("scroll", () =>
-			updatePosition(exampleRef, component, name, regex)
+			updatePosition(exampleRef, component, exampleName, regex)
 		);
 		return () => {
 			window.removeEventListener("scroll", () =>
-				updatePosition(exampleRef, component, name, regex)
+				updatePosition(exampleRef, component, exampleName, regex)
 			);
 		};
-	}, [component, name]);
+	}, [component, exampleName, urlExampleName]);
 
 	return (
 		<div ref={exampleRef}>
-			<h2>{name}</h2>
+			<h2>{exampleName}</h2>
 			<Suspense fallback={<p>Loading Example Component...</p>}>
-				<LazyExampleComponent exampleName={name} />
+				<LazyExampleComponent exampleName={exampleName} />
 			</Suspense>
 			<Suspense fallback={<p>Loading Code...</p>}>
-				<LazyExampleCode exampleName={name} />
+				<LazyExampleCode exampleName={exampleName} />
 			</Suspense>
 		</div>
 	);
