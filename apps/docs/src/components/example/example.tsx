@@ -1,4 +1,4 @@
-import { lazy, RefObject, Suspense, useEffect, useRef } from "react";
+import { lazy, ReactNode, RefObject, Suspense, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 const LazyExampleCode = lazy(() => import("../example-code/example-code"));
 const LazyExampleComponent = lazy(
@@ -44,10 +44,11 @@ const updatePosition = (
 };
 
 type PropTypes = {
+	children?: ReactNode;
 	exampleName?: string;
 };
 
-const Example = ({ exampleName = "" }: PropTypes) => {
+const Example = ({ children, exampleName = "" }: PropTypes) => {
 	const exampleRef = useRef<HTMLDivElement>(null);
 	const { component = "", exampleName: urlExampleName = "" } = useParams();
 
@@ -74,7 +75,9 @@ const Example = ({ exampleName = "" }: PropTypes) => {
 		<div ref={exampleRef}>
 			<h2>{exampleName}</h2>
 			<Suspense fallback={<p>Loading Example Component...</p>}>
-				<LazyExampleComponent exampleName={exampleName} />
+				<LazyExampleComponent exampleName={exampleName}>
+					{children}
+				</LazyExampleComponent>
 			</Suspense>
 			<Suspense fallback={<p>Loading Code...</p>}>
 				<LazyExampleCode exampleName={exampleName} />

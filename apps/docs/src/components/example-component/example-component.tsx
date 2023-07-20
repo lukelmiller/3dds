@@ -1,19 +1,28 @@
-import { lazy, Suspense } from "react";
+import { lazy, ReactNode, Suspense } from "react";
 import { useParams } from "react-router-dom";
 
 type PropTypes = {
+	children?: ReactNode;
 	exampleName?: string;
 };
 
-const ExampleComponent = (props: PropTypes) => {
-	const { component = "", exampleName = props.exampleName || "" } =
+const ExampleComponent = ({
+	children,
+	exampleName: propsExampleName,
+}: PropTypes) => {
+	const { component = "", exampleName = propsExampleName || "" } =
 		useParams();
-	const LazyLoadExample = lazy(
-		() => import(`3dds-components/${component}/examples/${exampleName}.js`)
-	);
+	const LazyLoadExample = children
+		? undefined
+		: lazy(
+				() =>
+					import(
+						`3dds-components/${component}/examples/${exampleName}.js`
+					)
+		  );
 	return (
 		<Suspense fallback={<p>Loading Example...</p>}>
-			<LazyLoadExample />
+			{LazyLoadExample ? <LazyLoadExample /> : children}
 		</Suspense>
 	);
 };

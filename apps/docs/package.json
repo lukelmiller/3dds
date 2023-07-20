@@ -9,8 +9,8 @@
 		"url": "https://github.com/lukelmiller/3dds.git"
 	},
 	"dependencies": {
-		"3dds-components": "^1.0.0",
-		"3dds-styles": "^1.0.0",
+		"3dds-components": "workspace:^",
+		"3dds-styles": "workspace:^",
 		"raw-loader": "^4.0.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",

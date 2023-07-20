@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/anchor-has-content */
 import "3dds-styles/button/button.css";
 import { ForwardedRef, ReactElement, cloneElement } from "react";
 import ForwardedRefTyped, { RefPropTypes } from "../utils/forward-ref-typed";

@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { FC, Fragment, Suspense, lazy, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ComponentPackageJson } from "../../types";
 const LazyExample = lazy(() => import("../example/example"));
@@ -11,20 +11,33 @@ const ComponentDoc = () => {
 	/// State:
 	const [componentPackageJson, setComponentPackageJson] =
 		useState<ComponentPackageJson>(defaultComponentPackageJson);
-	const [exampleNames, setExampleNames] = useState<string[]>([]);
+	const [examples, setExamples] = useState<{ example: FC; name: string }[]>(
+		[]
+	);
 	const { component = "" } = useParams();
 
 	useEffect(() => {
-		setExampleNames([]);
+		setExamples([]);
 		import(`3dds-components/${component}/examples/index`)
-			.then((module) => setExampleNames(module.default))
-			.catch((error) => setExampleNames([]));
+			.then((module) =>
+				setExamples(
+					Object.keys(module).map((moduleName) => ({
+						example: module[moduleName],
+						name: moduleName,
+					}))
+				)
+			)
+			.catch((error) => setExamples([]));
 		import(`3dds-components/${component}/package.json`)
 			.then((module) => setComponentPackageJson(module))
 			.catch((error) =>
 				setComponentPackageJson(defaultComponentPackageJson)
 			);
 	}, [component]);
+
+	const DefaultExample = examples.find(
+		({ name }) => name === "default"
+	)?.example;
 
 	return (
 		<>
@@ -37,19 +50,24 @@ const ComponentDoc = () => {
 			>
 				Component Source Code
 			</a>
-			{exampleNames.map((example) => {
-				return (
+			{DefaultExample && <DefaultExample />}
+			{examples.map(({ example: Example, name }) =>
+				name === "default" ? (
+					<Fragment key={`${component}-default-example-${name}`} />
+				) : (
 					<Suspense
-						key={`${component}-example-${example}`}
+						key={`${component}-example-${name}`}
 						fallback={<p>Loading Example...</p>}
 					>
 						<LazyExample
-							exampleName={example}
-							key={`${component}-example-${example}`}
-						/>
+							exampleName={name}
+							key={`${component}-example-${name}`}
+						>
+							<Example />
+						</LazyExample>
 					</Suspense>
-				);
-			})}
+				)
+			)}
 
 			<br />
 			<Suspense fallback={"Loading Props..."}>
